@@ -1,0 +1,4 @@
+.btngroups{
+  display: flex;
+  flex-direction: column;
+}

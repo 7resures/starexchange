@@ -3,7 +3,7 @@ import {store} from '../../store/store'
 
 Page({
   data: {
-
+   
   },
   onLoad:function() {
     this.storeBindings = createStoreBindings(this,{
