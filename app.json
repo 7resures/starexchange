@@ -3,11 +3,29 @@
     "pages/login/login",
     "pages/index/index",
     "pages/account/account",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/login/checkSecret/checkSecret",
+    "pages/login/updatePwd/updatePwd",
+    "pages/login/getSecret/getSecret",
+    "pages/mine/mine",
+    "components/inputGroups/input_search/input_search",
+    "pages/index/merchandiseInfor/merchandiseInfor",
+    "components/merchandises/goodInfor/goodInfor",
+    "components/merchandises/goodlabel/goodlabel",
+    "pages/mine/minepunish/minepunish",
+    "pages/account/feedback/feedback",
+    "pages/account/manageUser/manageUser",
+    "pages/account/updatePwd/updatePwd",
+    "pages/account/uploadUserInfor/uploadUserinfor",
+    "pages/account/uploadGoods/uploadGoods",
+    "pages/account/setSecret/setSecret",
+    "pages/account/uploadAdmin/uploadAdmin",
+    "pages/account/feedbackInfor/feedbackInfor",
+    "pages/account/mineInformation/mineInformation"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#228B22",
+    "navigationBarBackgroundColor": "#1E90FF",
     "navigationBarTitleText": "Star易物",
     "navigationBarTextStyle": "white"
   },
@@ -15,17 +33,26 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/home-unactive.png",
+        "selectedIconPath": "images/home.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "images/mine-unactive.png",
+        "selectedIconPath": "images/mine.png"
       },
       {
         "pagePath": "pages/account/account",
-        "text": "账户"
+        "text": "账户",
+        "iconPath": "images/account-unactive.png",
+        "selectedIconPath": "images/account.png"
       }
     ]
   },
   "usingComponents": {
-    "btn-groups":"/components/btngroups/btngroups",
-    "van-button": "@vant/weapp/button/index"
-  },
-  "sitemapLocation": "sitemap.json"
+    "van-button": "@vant/weapp/button/index",
+    "van-field": "@vant/weapp/field/index"
+  }
 }

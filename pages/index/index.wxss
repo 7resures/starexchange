@@ -1,4 +1,36 @@
-.btngroups{
+.page{
+  width: 100%;
+}
+.indexClass{
   display: flex;
   flex-direction: column;
+  height: 100%;
+  width: 750rpx;
+  background-color: #efefef;
+}
+.searchContent{
+  width: 95%;
+  margin-left: 2.5%;
+  border-radius: 1rem;
+  overflow: hidden;
+  position: fixed;
+  top: 2.5%;
+}
+.merchandise{
+  display: flex;
+  flex-direction: row;
+  width: 750rpx;
+  flex-wrap: wrap;
+  position: fixed;
+  margin-top: 28%;
+}
+ .scrollgoods{
+  height: 950rpx;
+}
+.pic{
+  width: 330rpx;
+  max-height: 300rpx;
+}
+.seacchLabel{
+  margin-top: 21%;
 }

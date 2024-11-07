@@ -1,18 +1,29 @@
 // pages/account/account.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+   NickName:"",
+   Avatar:"",
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  method:{
+  },
+  checkInfor:function() {
+    console.log("information is clicked!");
+    wx.navigateTo({
+      url: '../account/mineInformation/mineInformation',
+    })
+  },
+  //退出登录
+  loginOut:function(){
+    wx.removeStorageSync('token');  // 删除 token
+    wx.clearStorageSync();  // 清除所有存储数据
+  },
+  onLoad(options) {     
+    this.setData({
+      NickName:wx.getStorageSync('nickName'),
+      Avatar:wx.getStorageSync('avatar'),                     
+    })
+    console.log(this.data.NickName);
+    console.log(this.data.Avatar);
   },
 
   /**

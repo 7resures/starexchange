@@ -1,0 +1,19 @@
+/* pages/account/updatepwd/updatepwd.wxss */
+page{
+  background-color: #efefef;
+}
+.inputs{
+  width: 95%;
+  margin-left: 2.5%;
+  margin-top: 5%;
+}
+.ascertainbtn button{
+  margin-top: 5%;
+  margin-left: 20%;
+  border-radius: 10rpx;
+}
+.resetbtn button{
+  margin-top: 5%;
+  margin-left: 5%;
+  border-radius: 10rpx;
+}

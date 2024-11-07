@@ -1,0 +1,45 @@
+
+.simplegoods{
+  display: flex;  
+  flex-direction: column;
+  justify-content: center;
+  border: 1rpx solid #fff;
+  width: 330rpx;
+  height: 400rpx;
+  display: inline-block;
+  margin: 10rpx 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 5px 5px 5px #cdcfcf;
+}
+.picture{
+   text-align: center;
+   margin: auto;
+}
+.goodName{
+  font-size: 24rpx;
+  font-weight: bold;
+  margin: 10rpx;
+  padding-left: 20rpx;
+}
+.others{
+  font-size: 18rpx;
+  margin-top: 5rpx;
+  display: flex;
+  flex-direction: row;
+}
+
+.pirce{
+  font-size: 22rpx;
+  text-align: left;
+  width: 50%;
+  color: lightcoral;
+  padding-left: 20rpx;
+}
+
+.category{
+   font-size: 20rpx;
+   text-align: right;
+   width: 50%;
+   padding-right: 50rpx;
+}

@@ -1,0 +1,13 @@
+.selectLabel{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 80rpx; 
+  border-bottom: 2rpx solid #efefef;
+}
+.iconRight{
+  height: 30rpx;
+  width: 30rpx;
+  margin: 25rpx 30rpx 25rpx 30rpx;
+  justify-content: right;
+}

@@ -1,0 +1,40 @@
+<view class="account">
+   <view class="accountPanel" bindtap="checkInfor">            <!--用户信息面板-->
+     <view class="accountTitle">当前用户</view>
+     <van-divider custom-style="margin:0" />
+     <view class="accountInfor">
+     <view class="accountInforTitle">
+     <view class="titleInfor">用户名</view>
+     <view class="titleContent">{{NickName}}</view>
+     <view class="titleInfor">所属校园</view>
+     <view class="titleContent">江苏师范大学</view>
+     <view class="titleInfor">所属身份</view>
+     <view class="titleContent">校园用户</view>
+     </view>
+     <view class="accountPicture"><image class="Protrait" src= "{{Avatar}}"></image></view>
+     </view>
+   </view>
+
+   <view class="UserControl">                         <!--用户操作栏-->
+      <select-label src="../account/uploadGoods/uploadGoods">
+        <image slot="icon" class="icon" src = "../../images/upload.png"></image>
+        <view slot ="name">上架商品</view>
+      </select-label>
+      <select-label src="../account/setSecret/setSecret">
+        <image slot="icon" class="icon" src = "../../images/problem.png"></image>
+        <view slot ="name">设置密保</view>
+      </select-label>
+      <select-label src="../account/updatePwd/updatePwd">
+        <image slot="icon" class="icon" src = "../../images/secret.png"></image>
+        <view slot ="name">修改密码</view>
+      </select-label>
+      <select-label src="../account/feedback/feedback">
+        <image slot="icon" class="icon" src = "../../images/feedback.png"></image>
+        <view  slot ="name">反馈建议</view>
+      </select-label>
+      <select-label bindtap="loginOut" src="../login/login">
+        <image slot="icon" class="icon" src = "../../images/loginout.png"></image>
+        <view  slot ="name">退出登录</view>
+      </select-label>
+   </view>
+</view>

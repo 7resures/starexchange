@@ -1,0 +1,15 @@
+<view class="uploadUserInfor">
+
+<view class="downloadFile">
+  <van-button icon="down" type="primary">下载模板</van-button>
+</view>
+
+<view class="uploadFile">
+  <van-uploader>
+  <van-button icon="description" type="primary">上传文件</van-button>
+</van-uploader>
+</view>
+
+<view class="information"></view>
+<label class="informationLabel" for="">提示</label><view class="informationView">下载文件为Excel文件，请将本校用户信息严格按照文件内格式进行填写，然后上传文件即可</view>
+</view>

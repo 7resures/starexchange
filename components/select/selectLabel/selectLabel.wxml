@@ -1,0 +1,7 @@
+<view class="selectLabel" bindtap="selectionClick">
+<view style="display: flex;flex-direction: row;line-height: 80rpx;">
+  <slot name="icon"></slot>
+  <slot name="name"></slot>
+</view>
+<view> <image class="iconRight"  src="../../../images/right.png"></image> </view>
+</view>

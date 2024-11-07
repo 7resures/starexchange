@@ -1,0 +1,12 @@
+<view class="simplegoods"  bindtap="goodInfor">
+ <view class="picture">
+  <slot name="picture"></slot>
+ </view>
+  <view class="goodName">
+   <slot name="name"></slot>
+  </view>
+  <view class="others">
+  <view class="pirce"><slot name="price"></slot></view>
+  <view class="category"><slot name="category"></slot></view>
+  </view>
+</view>

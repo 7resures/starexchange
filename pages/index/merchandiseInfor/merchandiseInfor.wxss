@@ -1,0 +1,14 @@
+/* pages/index/merchandiseInfor/merchandiseInfor.wxss */
+page{
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  display: flex;
+  flex-direction: column;
+}
+.changeImage{
+  width: 100%;
+}
+swiper{
+  height: 500rpx;
+}

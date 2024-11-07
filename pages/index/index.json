@@ -1,3 +1,7 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "van-search": "@vant/weapp/search/index",
+    "searchLabel":"../../components/inputGroups/input_search/input_search",
+    "simplegoods":"../../components/merchandises/simplegoods/simplegoods"
+  }
 }

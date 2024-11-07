@@ -1,0 +1,34 @@
+/* pages/account/uploadUserInfor/uploadUserinfor.wxss */
+page{
+
+  background-color: #efefef;
+  padding: 10rpx;
+}
+
+.downloadFile{
+  margin-left: 35%;
+  margin-top: 10%;
+}
+
+.uploadFile{
+  margin-left: 35%;
+  margin-top: 10%;
+}
+.informationLabel{
+    font-weight: bold;
+    width: 90%;
+    margin-left: 5%;
+    color: rgba(0,0,0,0.8);
+}
+.informationView{
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  color: rgba(0,0,0,0.6);
+  width: 90%;
+  margin-left: 5%;
+  
+}
+.information{
+  margin-top: 20%;
+
+}

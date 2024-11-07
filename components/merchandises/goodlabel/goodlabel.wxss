@@ -1,0 +1,35 @@
+/* components/merchandises/goodlabel/goodlabel.wxss */
+.goodlabel{
+   display: flex;
+   flex-direction: row;
+   margin-top: 20rpx;
+   padding: 5rpx;
+   width: 95%;
+   border-radius: 10rpx;
+   margin-left: 1%;
+   background-color:#DCDCDC;
+   box-shadow: 5rpx 5rpx 2rpx 4rpx #DCDCDC;
+}
+.picture{
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 10rpx;
+  margin-left: 10rpx;
+  margin-top: 15rpx;
+}
+.infor{
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.singleinfor{
+  margin: 5px 0px 5px 0px;
+}
+text{
+  margin-right: 20rpx;
+  font-weight: 700;
+}
+span{
+  color: #5f5c5c;
+}

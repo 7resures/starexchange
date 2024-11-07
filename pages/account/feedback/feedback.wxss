@@ -1,0 +1,19 @@
+.feedback{
+  height: 100%;
+  width: 100%;
+  background-color: #efefef;
+  padding: 3.5%;
+}
+.feedbackContent{
+  padding: 1.5%;
+  width: 90%;
+  height: 400rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  font-size: 32rpx;
+}
+.buttoninfo button{
+  margin-top: 10%;
+  width: 60%;
+  margin-left: 15%;
+}

@@ -1,0 +1,17 @@
+<view>
+  <van-search value="{{ value }}" action-text="搜索" placeholder="请输入搜索关键词" show-action bind:search="onSearch"bind:cancel="onCancel"/>
+  <van-dropdown-menu active-color="#1989fa">
+  <van-dropdown-item  disabled="true" title="姓名" />
+  <van-dropdown-item  value="{{ value2 }}" options="{{ option2 }}" />
+  <van-dropdown-item  value="{{ value3 }}" options="{{ option3 }}" />
+  <van-dropdown-item  value="{{ value1 }}" options="{{ option1 }}" />
+</van-dropdown-menu>
+<scroll-view scroll-y="true" class="scrollInfor">
+  <view class="rowInfor" wx:for="{{userInfor}}" wx:key="{{item.id}}">
+  <view>{{item.name}}</view>
+  <view>{{item.grade}}</view>
+  <view>{{item.department}}</view>
+  <view>{{item.status}}</view>
+  </view>
+</scroll-view>
+</view>

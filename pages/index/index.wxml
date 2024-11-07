@@ -1,6 +1,24 @@
-<view class="btngroups">
-<van-button type="primary" size="large">大号按钮</van-button>
-<van-button type="primary" size="normal">普通按钮</van-button>
-<van-button type="primary" size="small">小型按钮</van-button>
-<van-button type="primary" size="mini">迷你按钮</van-button>
+<view class="indexClass">
+  <view class="searchContent">
+    <!--搜索框的内容-->
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">
+      <view slot="action" bindtap="onClick">搜索</view>
+    </van-search>
+  </view>
+  <view class="seacchLabel">
+    <!--搜索标签的内容-->
+    <searchLabel></searchLabel>
+  </view>
+  <view class="merchandise">
+    <!--商品的内容-->
+    <scroll-view class="scrollgoods" style="height:{{winHeight - barHeight}}px;" scroll-y="true">
+    <simplegoods wx:for="{{goods}}" wx:key="id" wx:for-index="index" data-index="{{index}}" bindtap="goodInfor">
+      <view slot="picture"> <image class="pic" src="{{item.picture}}"></image></view>
+      <view slot="name">{{item.name}}</view>
+      <text slot="price">{{item.price}}</text>
+      <text slot="category">{{item.category}}</text> 
+    </simplegoods>
+  </scroll-view>
+  </view>
+
 </view>

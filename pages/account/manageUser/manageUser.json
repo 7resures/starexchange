@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "manage-Infor":"../../../components/manageInfor/manageInfor"
+  }
+}

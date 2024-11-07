@@ -1,1 +1,47 @@
-/* pages/login/login.wxss */
+.loginContainer{
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+}
+.img{
+   margin-left: 12%;
+   margin-top: 10%;
+}
+.inputGroup{
+  padding: 50rpx;
+}
+.inputInfor{
+  display: flex;
+  flex-direction: row;
+  margin: 0rpx 0rpx 0rpx 12%;
+  width: 500rpx;
+  height: 88rpx;
+}
+.inputContent{
+  width: 100%;
+  height: 100rpx;
+}
+.dropDown{
+  background-color: #fff;
+  width: 80%;
+  line-height: 88rpx;
+  color:#928b8b;
+  font-size: 28rpx;
+  font-weight: 200;
+}
+.dropDownContent{
+  font-size: 18rpx;
+}
+
+.btn_groups{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 150rpx;
+}
+van-button button{
+  width: 220rpx;
+  border-radius: 10rpx;
+}
+

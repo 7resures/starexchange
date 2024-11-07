@@ -1,0 +1,20 @@
+<view class="minepunish">
+<van-divider contentPosition="center" customStyle="color: #323232; border-color: #DCDCDC; font-size: 28rpx;">商品图片</van-divider>
+<view class="pictures" >
+  <van-uploader max-count="8" catch:delete="deleteImg" file-list="{{ fileList }}"  />
+</view>
+<van-divider contentPosition="center" customStyle="color: #323232; border-color: #DCDCDC; font-size: 28rpx;">商品信息</van-divider>
+<view class="goodinfor">
+  <van-cell-group>
+  <van-field value="{{ goodName }}" clearable label="商品名" placeholder="星之守护者手办" bind:click-icon="onClickIcon" />
+  <van-field value="{{ goodDescription }}" label="商品描述" clearable placeholder="这是星之守护者手办这是星之守护者手办这是星之守护者手办这是星之守护者手办"/>
+  <van-field value="{{ goodPrice }}" label="商品价格" clearable placeholder="999"/>
+  <van-field value="{{ goodPrice }}" label="联系微信" clearable placeholder="10010"/>
+  <van-field value="{{ goodPrice }}" label="联系电话" clearable placeholder="10010"/>
+</van-cell-group>
+</view>
+<view class="buttonGroup"></view>
+<view class="buttons"><van-button custom-style="border-radius:10rpx;width:300rpx" type="info">确认修改</van-button></view>
+<view class="buttons"><van-button custom-style="border-radius:10rpx;width:300rpx" type="danger">删除商品</van-button></view>
+</view>
+

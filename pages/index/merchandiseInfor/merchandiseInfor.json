@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "goodInfor":"../../../components/merchandises/goodInfor/goodInfor"
+  }
+}

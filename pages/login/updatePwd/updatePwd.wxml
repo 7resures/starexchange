@@ -1,0 +1,11 @@
+<view class="updateSecret">
+  <view class="main">
+  <van-cell-group>
+  <van-field model:value="{{ value }}"  placeholder="新密码"/>
+</van-cell-group>
+<van-cell-group>
+  <van-field model:value="{{ value }}"  placeholder="确认新密码"/>
+</van-cell-group>
+<navigator style="height: 0rpx;"  url="../login"><van-button type="info">修改密码</van-button></navigator>
+</view>
+</view>

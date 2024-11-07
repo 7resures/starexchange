@@ -1,2 +1,24 @@
-<!--pages/login/login.wxml-->
-<text>pages/login/login.wxml</text>
+<view class="loginContainer">
+<!-- 标题 -->
+  <image class="img" mode="widthFix" src="../../images/staryiwu1.png"></image>  
+<!--输入框-->
+<view class="inputGroup">
+  <van-cell-group class="inputInfor">
+  <!-- <van-icon class="inputIcon" name="friends-o"></van-icon> -->
+  <van-field class="inputContent" bind:input="onUserIdInput" value="{{userId}}" placeholder="请输入用户名(学号)" />
+</van-cell-group>
+<van-cell-group class="inputInfor">
+  <!-- <van-icon class="inputIcon" name="closed-eye"></van-icon> -->
+  <van-field class="inputContent" type="password" bind:input="onUserPwdInput" value="{{userPwd}}" placeholder="请输入密码（身份证后6位）" />
+</van-cell-group>
+<dropSelected bind:selectedItemChange="onSelectedItemChange" campus="{{campusName}}"></dropSelected>
+</view>
+<!--登录/忘记密码组件-->
+<view class="btn_groups">
+  <van-button bindtap="goIndex" plain type="primary">密码登录</van-button>
+  <!-- <navigator url="../login/getSecret/getSecret" open-type="navigate"><van-button plain type="info">授权登录</van-button></navigator>
+   -->
+   <van-button bindtap="getUserProfile" plain type="info">授权登录</van-button>
+</view>
+</view>
+

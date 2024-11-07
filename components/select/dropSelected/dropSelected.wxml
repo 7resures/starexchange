@@ -1,0 +1,8 @@
+<view class="dropdown" bindtouchmove="preventTouchMove" >   <!--下拉选择框-->
+  <view class="dropdown-header" bindtap="toggleDropdown">{{selectedItem}}</view>
+  <view class="dropdown-menu" style="height: {{showDropdown ? '150rpx' : '0rpx'}}; {{dropdownAnimation}}" animation="{{animationData}}">
+    <scroll-view bind:scrolltolower="scrollToLower" scroll-y style="height: 150rpx;">
+      <view class="selectInfor" wx:for="{{campus}}" wx:for-item="item" data-text="{{item}}" wx:key="index" bindtap="selectItem">{{item}}</view>
+    </scroll-view>
+  </view>
+</view>

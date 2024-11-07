@@ -1,0 +1,37 @@
+<view class="uploadGood">
+  <view class="uploadPicture">
+  <view class="uploadLabel">上传图片</view>
+  <view class="pictures">
+    <van-uploader max-count="8" catch:delete="deleteImg" file-list="{{ fileList }}" bind:after-read="afterRead" />
+  </view>
+  </view>
+  <view class="information">
+    <view class="labelInfor">商品名称</view>
+    <input class="inputInfor" placeholder="在这里输入商品名称" type="text"/>
+  </view>
+  <view class="information">
+    <view class="labelInfor">商品类别</view>
+    <view class="selectinfor">
+    <van-dropdown-menu>
+  <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+</van-dropdown-menu>
+</view>
+  </view>
+  <view class="information">
+    <view class="labelInfor">商品价格</view>
+    <input class="inputInfor" placeholder="在这里输入商品价格" type="text"/>
+  </view>
+  <view class="information">
+    <view class="labelTextarea">商品介绍</view>
+    <textarea placeholder="在这里输入商品简介" name="" id="" cols="30" rows="10"></textarea>
+  </view>
+  <view class="information">
+    <view class="labelInfor">联系微信</view>
+    <input class="inputInfor" placeholder="在这里输入联系微信" type="text"/>
+  </view>
+  <view class="information">
+    <view class="labelInfor">联系电话</view>
+    <input class="inputInfor" placeholder="在这里输入联系电话" type="text"/>
+  </view>
+  <van-button type="info">上架商品</van-button>
+</view>

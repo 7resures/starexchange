@@ -1,0 +1,30 @@
+.dropdown {
+  width: 77%;
+  margin: 10rpx 0rpx 0rpx 12%;
+  background-color: #fff;
+  height: 80rpx;
+}
+
+.dropdown-header {
+  text-align: center;
+  align-items: center;
+  color: #928b8b;
+  height: 70rpx;
+  padding-top: 20rpx;
+}
+.dropdown-menu {
+  overflow: hidden;
+  transition: height 0.3s;
+  height: 150rpx;
+  background-color: #fff;
+  padding: 0rpx;
+  margin-top: 0rpx;
+}
+.selectInfor{
+  text-align: center;
+  align-items: center;
+  color: #928b8b;
+  font-size: 26rpx;
+  margin-top: 10rpx;
+  padding-bottom: 10rpx;
+}

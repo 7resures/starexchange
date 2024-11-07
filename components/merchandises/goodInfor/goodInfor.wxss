@@ -1,0 +1,30 @@
+/* components/merchandises/goodInfor/goodInfor.wxss */
+.rowlabel{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-left: 20rpx;
+  background-color: #fff;
+  border: 2rpx #ffffff solid;
+  box-shadow: 2rpx 2rpx 5rpx 2rpx #fff;
+  border-radius: 20rpx;
+}
+.view1{
+  color:skyblue;
+  line-height: 62rpx;
+  font-weight: bold;
+  letter-spacing: 2rpx;
+}
+.view2{
+  color: skyblue;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding:10rpx 0rpx 10rpx 30rpx;
+}
+#state{
+  color:red
+}
+

@@ -1,0 +1,26 @@
+<view class="mine">
+<view class="mineTabbar">
+  <van-tabs active="{{active}}" class="vanTabs" title-active-color="#1E90FF" color="#1E90FF" duration="0.5"  bind:click="changeTab">   <!--顶部tabbar-->
+    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">  <!--搜索框-->
+      <view slot="action" bindtap="onClick">搜索</view>   
+    </van-search>
+
+  <van-tab title="我的发布">    <!--发布组件-->
+   <scroll-view class="scrollgoods" scroll-y="true">
+     <good-label id="label1"></good-label>
+   </scroll-view>
+  </van-tab>
+
+  <van-tab title="我的关注">     <!--关注组件-->
+    <scroll-view class="scrollgoods" scroll-y="true">
+     <good-label id="label2"></good-label>
+   </scroll-view>
+  </van-tab>
+
+  </van-tabs>
+</view>
+
+
+
+</view>
+

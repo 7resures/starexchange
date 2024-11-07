@@ -1,0 +1,7 @@
+<view class="AllLabels">
+<scroll-view class="scroll-container" scroll-x="true">
+  <view wx:for="{{labels}}" wx:key="*this" wx:for-index="index" data-index="{{index}}" bindtap="clickLabel" class="label">
+  <button  class="{{index===checkNumber?'labelButtonActive':'labelButton'}}">{{item}}</button>
+  </view>
+</scroll-view>
+</view>

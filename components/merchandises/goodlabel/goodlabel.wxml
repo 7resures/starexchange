@@ -1,0 +1,16 @@
+<view class="goodlabel" wx:for="{{sign===0?goodlabels:caregoods}}" wx:key="id" bindtap="goodclick" >
+  <view class="img">
+  <image class="picture" src="{{item.url}}"></image>
+  </view>
+  <view class="infor">
+  <view class="singleinfor">
+    <text>商品名称</text><span>{{item.name}} </span>
+  </view>
+  <view class="singleinfor">
+    <text>商品状态</text><span>{{item.state}} </span>
+  </view>
+  <view class="singleinfor">
+    <text>上架时间</text><span>{{item.uploadDate}}</span>
+  </view>
+  </view>
+</view>
