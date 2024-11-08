@@ -15,7 +15,32 @@ Page({
   },
   commitInfor:function(){
     if(this.data.feedbackContent)
-    console.log(this.data.feedbackContent);
+   {
+     wx.request({
+       url: getApp().globalData.api + "/api/updateAdvise",
+       method:"POST",
+       data:{
+        adviseContent:this.data.feedbackContent,
+        userId: Number(wx.getStorageSync('userdata').id)
+       },
+       success(res){
+        wx.showModal({
+          title: '提示',
+          content: '提交成功，您的建议我们将视情况采纳!非常感谢!',
+          showCancel:false,
+         confirmText:"确认"
+        })
+       },
+       fail(err){
+         wx.showModal({
+           title: '提示',
+           content: '提交失败，请重试',
+           showCancel:false,
+          confirmText:"确认"
+         })
+       }
+     })
+   }
     else
     {
       Dialog.alert({

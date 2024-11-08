@@ -1,21 +1,21 @@
 <view class="resetPwd"> 
   <view class="inputs">
     <van-cell-group>
-  <van-field value="{{ value }}" placeholder="在此处输入旧密码" border="{{ true }}" bind:change="onChange"
+  <van-field value="{{ oldPwd }}" placeholder="在此处输入旧密码，第一次修改则不需要输入" border="{{ true }}" data-field="oldPwd" bindinput="inputChange"
   />
 </van-cell-group>
   </view>
   <view class="inputs">
     <van-cell-group>
-  <van-field value="{{ value }}" placeholder="在此处输入新密码" border="{{ true }}" bind:change="onChange"/>
+  <van-field value="{{ newPwd }}" placeholder="在此处输入新密码" border="{{ true }}" data-field="newPwd" bindinput="inputChange"/>
 </van-cell-group>
   </view>
   <view class="inputs">
     <van-cell-group>
-  <van-field value="{{ value }}" placeholder="确认新密码" border="{{ true }}" bind:change="onChange"/>
+  <van-field value="{{ confirmNewPwd }}" placeholder="确认新密码" border="{{ true }}" data-field="confirmNewPwd" bindinput="inputChange"/>
 </van-cell-group>
   </view>
 
-  <van-button class="ascertainbtn" type="primary">修改密码</van-button>
-  <van-button class="resetbtn" type="default">重置内容</van-button>
+  <van-button class="ascertainbtn" type="primary" bind:tap="replacePwd">修改密码</van-button>
+  <van-button class="resetbtn" type="default" bind:tap="resetContent">重置内容</van-button>
 </view>

@@ -12,7 +12,7 @@ Page({
     goodlabels:[
       {
         id:1,
-        url:"../../../images/1.jpg",
+        url:"../../../images/2.jpg",
         state:"上架中",
         uploadDate:"2022/11/19",
         name:"星之守护者手办"
@@ -33,7 +33,7 @@ Page({
       },
       {
         id:4,
-        url:"../../../images/1.jpg",
+        url:"../../../images/2.jpg",
         state:"上架中",
         uploadDate:"2022/11/19",
         name:"星之守护者手办"
@@ -70,7 +70,7 @@ Page({
       },
       {
         id:1,
-        url:"../../../images/1.jpg",
+        url:"../../../images/2.jpg",
         state:"上架中",
         uploadDate:"2022/11/19",
         name:"星之守护者手办"

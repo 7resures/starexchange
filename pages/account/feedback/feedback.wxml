@@ -1,6 +1,6 @@
 <view class="feedback">
-<textarea class="feedbackContent" bindinput="bindTextAreaBlur" placeholder="请在这里输入您宝贵的意见" >
+<textarea class="feedbackContent" bindinput="bindTextAreaBlur"  placeholder="请在这里输入您宝贵的意见" >
 </textarea>
-<van-button class="buttoninfo" bind:click="commitInfor" type="info">提交反馈</van-button>
+<van-button class="buttoninfo" bind:tap="commitInfor" type="info">提交反馈</van-button>
 </view>
 <van-dialog id="van-dialog" />

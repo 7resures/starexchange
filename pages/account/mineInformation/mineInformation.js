@@ -1,20 +1,59 @@
 // pages/account/mineInformation/mineInformation.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    Protrait:"../../../images/Protrait3.jpg",
-    userName:"雨一直下",
-    avatarUrl:""
+    Avatar:"",
+    Nickname:"",
+    Username:"",
+    CampusName:"",
+    PhoneNumber:"",
+    Wechat:"",
+    Qq:"",
   },
   method:{
-
   },
   confirmInformation:function () {
-    wx.switchTab({
-      url: '../account',
+    let updateDatas =  {
+      nickname:this.data.Nickname,
+      campusName:this.data.CampusName,
+      phoneNumber:this.data.PhoneNumber,
+      wechat:this.data.Wechat,
+      qq:this.data.Qq,
+      username:this.data.Username,
+      wechatId:"", 
+      authority:0,  
+    }
+    if(wx.getStorageSync('uidType') == 0){
+      updateDatas.username = wx.getStorageSync('uid')
+    }else{
+      updateDatas.wechatId = wx.getStorageSync('uid')
+    }
+    if(updateDatas.CampusName != ""){
+      updateDatas.authority =  1
+    }
+    wx.request({
+      url: getApp().globalData.api + "/api/updateUserInfo",
+      method:"PUT",
+      data:updateDatas,
+      success(res){
+          if(res.data.code == 0){
+            wx.showModal({
+              title: '提示',
+              content: '用户信息修改成功',
+              showCancel: false, // 不显示取消按钮，只显示确认按钮
+              confirmText: '确认', // 设置确认按钮文字
+            });
+          }else{
+            wx.showModal({
+              title: '提示',
+              content: res.data.msg,
+              showCancel: false, // 不显示取消按钮，只显示确认按钮
+              confirmText: '确认', // 设置确认按钮文字
+            });
+          }
+      },
+      fail(err){
+          console.log(err);
+      }
     })
   },
   showInput: function () {
@@ -25,17 +64,19 @@ Page({
 
   // 输入内容变化时触发
   inputChange: function (e) {
+    const field = e.currentTarget.dataset.field; // 获取 data-field 的值
+    const value = e.detail.value; // 获取输入的内容
     this.setData({
-      inputValue: e.detail.value
+      [field]: value // 动态设置 data 中对应的字段
     });
   },
-
   // 输入框失去焦点时触发，切换回非输入状态
   inputBlur: function () {
     this.setData({
       isFocus: false
     });
   },
+  //选择图片
   selectImage: function () {
     let that = this;
     wx.chooseMedia({
@@ -44,7 +85,6 @@ Page({
       sizeType: ['original'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        //console.log(res.tempFiles[0].tempFilePath);
         that.setData({
           avatarUrl: res.tempFiles[0].tempFilePath
         });
@@ -75,7 +115,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    let datas = getApp().globalData.userdata
+      this.setData({
+        Avatar:datas.avatar,
+        Nickname:datas.nickname,
+        Username:datas.username,
+        CampusName:datas.campusName,
+        PhoneNumber:datas.phoneNumber,
+        Wechat:datas.wechat,
+        Qq:datas.qq,
+      })
   },
 
   /**
@@ -89,7 +138,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
   },
 
   /**

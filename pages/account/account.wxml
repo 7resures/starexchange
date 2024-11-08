@@ -7,9 +7,9 @@
      <view class="titleInfor">用户名</view>
      <view class="titleContent">{{NickName}}</view>
      <view class="titleInfor">所属校园</view>
-     <view class="titleContent">江苏师范大学</view>
+     <view class="titleContent">{{CampusName}}</view>
      <view class="titleInfor">所属身份</view>
-     <view class="titleContent">校园用户</view>
+     <view class="titleContent">{{Role}}</view>
      </view>
      <view class="accountPicture"><image class="Protrait" src= "{{Avatar}}"></image></view>
      </view>
@@ -20,9 +20,9 @@
         <image slot="icon" class="icon" src = "../../images/upload.png"></image>
         <view slot ="name">上架商品</view>
       </select-label>
-      <select-label src="../account/setSecret/setSecret">
+      <select-label src="">
         <image slot="icon" class="icon" src = "../../images/problem.png"></image>
-        <view slot ="name">设置密保</view>
+        <view slot ="name">商品管理</view>
       </select-label>
       <select-label src="../account/updatePwd/updatePwd">
         <image slot="icon" class="icon" src = "../../images/secret.png"></image>

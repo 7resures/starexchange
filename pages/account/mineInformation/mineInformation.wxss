@@ -47,7 +47,7 @@ page{
   outline: none;
   border: none;
   background: none;
-  width: 50rpx;
+  width: 100rpx;
 }
 .writeImg{
   width: 20rpx;
@@ -67,7 +67,6 @@ page{
   height: 100rpx;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 .labelTile{
  width: 30%;
@@ -84,7 +83,7 @@ page{
   display: flex;
   justify-content: center;
   align-items: center; 
-  text-align: right;
+  text-align: left;
 }
 .inputValue
 {
@@ -92,7 +91,7 @@ page{
   height: 100%;
   color: black;
   display: flex;
-  text-align: center;
+  text-align: left;
 }
 .line{
   width: 100%; /* 设置线的宽度 */

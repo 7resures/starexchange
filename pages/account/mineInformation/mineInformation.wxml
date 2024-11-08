@@ -2,36 +2,38 @@
 
   <view class="titleInfor">
     <view class="accountPicture">
-      <image class="Protrait" src="{{Protrait}}" mode="aspectFill" bindtap="selectImage"></image>
+      <image class="Protrait" src="{{Avatar}}" mode="aspectFill" bindtap="selectImage"></image>
     </view>
     <view class="inputUserName">
-      <input class="input" value="{{userName}}" focus="{{isFocus}}" bindblur="inputBlur" />
-      <image class="writeImg" src="../../../images/write.jpg"  bindinput="inputChange"></image>
+      <input class="input" value="{{Nickname}}" bindinput="inputChange" data-field="Nickname" focus="{{isFocus}}"  />
+      <image class="writeImg" src="../../../images/write.jpg" ></image>
     </view>
 </view>
 
 <view class="basicInfor">
 <view class="basicInforLabel"> 
-<view class="labelTile">所属校园</view> <view class="labelValue">重庆师范大学</view> 
+<view class="labelTile">登录账号</view> <input class="inputValue" placeholder="登录时用,且只能设置一次" data-field="Username" bindinput="inputChange" value="{{Username}}"></input> 
 </view>
 <view class="line"></view>
 <view class="basicInforLabel"> 
-  <view class="labelTile">校园编号</view> <view class="labelValue">2017051611003</view> 
+  <view class="labelTile">所属学校</view> <input class="inputValue" data-field="CampusName" bindinput="inputChange"  value="{{CampusName}}"></input> 
 </view>
 </view> 
+
+
 <view class="replaceInfor">
   <view class="basicInforLabel"> 
-<view class="labelTile">联系电话</view> <input class="inputValue" value="1532684751"></input> 
+<view class="labelTile">联系电话</view> <input class="inputValue" data-field="PhoneNumber" bindinput="inputChange"  value="{{PhoneNumber}}"></input> 
 </view>
 <view class="line"></view>
 <view class="basicInforLabel"> 
-  <view class="labelTile">联系微信</view> <input class="inputValue" value="1532684751"></input> 
+  <view class="labelTile">联系微信</view> <input class="inputValue" data-field="Wechat"  bindinput="inputChange" value="{{Wechat}}"></input> 
 </view>
 <view class="line"></view>
 <view class="basicInforLabel"> 
-  <view class="labelTile">联系QQ</view> <input class="inputValue" value="1532684751"></input> 
+  <view class="labelTile">联系QQ</view> <input class="inputValue" data-field="Qq" bindinput="inputChange"  value="{{Qq}}"></input> 
 </view>
 <view class="line"></view>
 </view>
-<button class="confirmBtn" type="primary" bindtap="confirmInformation">确定</button>
+<button class="confirmBtn" type="primary" bindtap="confirmInformation">修改</button>
 </view>
