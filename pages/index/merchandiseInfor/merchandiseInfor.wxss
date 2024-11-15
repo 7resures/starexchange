@@ -10,5 +10,10 @@ page{
   width: 100%;
 }
 swiper{
-  height: 500rpx;
+  height: 600rpx;
+}
+.viewsCount{
+    text-align: right;
+    margin: 10rpx 10rpx 10rpx 0rpx;
+    color: rgb(20, 57, 219);
 }

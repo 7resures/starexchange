@@ -1,42 +1,43 @@
 <view class="rowlabel">
 <view class="view1">商品名称</view>
-<view class="view2">{{goodsInfor.name}}</view>
+<view class="view2">{{goods.productName}}</view>
 </view>
 
 <view class="rowlabel">
 <view class="view1">商品状态</view>
-<view class="view2" id="state">{{goodsInfor.state}}</view>
+<view class="view2" id="state">{{goods.productStatus}}</view>
 </view>
 
 <view class="rowlabel">
 <view class="view1">商品类型</view>
-<view class="view2">{{goodsInfor.type}}</view>
+<view class="view2">{{goods.tags}}</view>
 </view>
 
 <view class="rowlabel">
 <view class="view1">商品价格</view>
-<view class="view2">{{goodsInfor.price}}</view>
+<view class="view2">{{goods.productPrice}}</view>
 </view>
 
 <view class="rowlabel">
-<view class="view1">上架日期</view>
-<view class="view2">{{goodsInfor.uploadDate}}</view>
+<view class="view1">浏览数量</view>
+<view class="view2">{{goods.productViews}}</view>
 </view>
 
 <view class="rowlabel">
 <view class="view1">商品介绍</view>
-<view class="view2">{{goodsInfor.introduction}}</view>
+<view class="view2">{{goods.productDescription}}</view>
 </view>
 
 <view class="rowlabel">
 <view class="view1">关注商品</view>
 <view class="view2"><van-switch checked="{{ checked }}" size="24px" bind:change="onChange" /></view>
-
 </view>
 
 <view class="rowlabel">
 <view class="view1">联系方式</view>
 <view class="view2"> 
-<view><van-icon name="phone" />{{goodsInfor.qq}}</view>
+<view><van-icon name="phone" />{{goods.contactPhone}}</view>
+<view><van-icon name="wechat" />{{goods.contactWeChat}}</view>
+<view><van-icon name="qq" />{{goods.contactQQ}}</view>
 </view>
 </view>

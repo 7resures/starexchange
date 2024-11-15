@@ -6,11 +6,12 @@
 <van-divider contentPosition="center" customStyle="color: #323232; border-color: #DCDCDC; font-size: 28rpx;">商品信息</van-divider>
 <view class="goodinfor">
   <van-cell-group>
-  <van-field value="{{ goodName }}" clearable label="商品名" placeholder="星之守护者手办" bind:click-icon="onClickIcon" />
-  <van-field value="{{ goodDescription }}" label="商品描述" clearable placeholder="这是星之守护者手办这是星之守护者手办这是星之守护者手办这是星之守护者手办"/>
-  <van-field value="{{ goodPrice }}" label="商品价格" clearable placeholder="999"/>
-  <van-field value="{{ goodPrice }}" label="联系微信" clearable placeholder="10010"/>
-  <van-field value="{{ goodPrice }}" label="联系电话" clearable placeholder="10010"/>
+  <van-field value="{{Name||''}}" label="商品名" placeholder="{{goodInfo.productName||''}}"/>
+  <van-field value="{{Describe||''}}" label="商品描述" placeholder="{{goodInfo.productDescription||''}}"/>
+  <van-field value="{{Price||''}}" label="商品价格" placeholder="{{goodInfo.productPrice||''}}"/>
+  <van-field value="{{Phone||''}}" label="联系电话" placeholder="{{goodInfo.contactPhone||''}}"/>
+  <van-field value="{{Wechat||''}}" label="联系微信" placeholder="{{goodInfo.contactWeChat||''}}"/>
+  <van-field value="{{QQ||''}}" label="联系QQ" placeholder="{{goodInfo.contactQQ||''}}"/>
 </van-cell-group>
 </view>
 <view class="buttonGroup"></view>

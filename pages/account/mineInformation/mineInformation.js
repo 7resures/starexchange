@@ -1,4 +1,3 @@
-// pages/account/mineInformation/mineInformation.js
 Page({
   data: {
     Avatar:"",
@@ -12,6 +11,7 @@ Page({
   method:{
   },
   confirmInformation:function () {
+    let that = this
     let updateDatas =  {
       nickname:this.data.Nickname,
       campusName:this.data.CampusName,
@@ -42,6 +42,48 @@ Page({
               showCancel: false, // 不显示取消按钮，只显示确认按钮
               confirmText: '确认', // 设置确认按钮文字
             });
+            wx.request({
+              url: getApp().globalData.api + '/api/userInfoGet',
+              method:"GET",
+              data:{
+                token:wx.getStorageSync('token')
+              },
+              success(res){
+                let datas = res.data.data
+                if (res.data.code == 0){
+                  //将用户信息存入全局变量
+                  getApp().globalData.userdata = datas
+                  that.setData({
+                    NickName: datas.nickname == "" ? datas.username : datas.nickname,
+                    Avatar:datas.avatar,
+                    Username:datas.username,
+                    CampusName:datas.campusName == "" ? "未加入校园" : datas.campusName,
+                    PhoneNumber:datas.phoneNumber,
+                    Wechat:datas.wechat,
+                    Qq:datas.qq
+                  })
+                } else{
+                  //token 过期需要重新登录
+                  wx.showModal({
+                    title: '提示',
+                    content: '用户身份信息已过期，请重新登录',
+                    showCancel: false, // 不显示取消按钮，只显示确认按钮
+                    confirmText: '确认', // 设置确认按钮文字
+                    success(res) {
+                      if (res.confirm) {
+                        wx.clearStorageSync('token');
+                        wx.redirectTo({
+                          url: '../login/login'  // 替换为你的登录页面路径
+                        });
+                      }
+                    }
+                  });
+                }
+              },
+              fail(err){
+                console.error(err);
+              }
+            })
           }else{
             wx.showModal({
               title: '提示',
@@ -82,7 +124,7 @@ Page({
     wx.chooseMedia({
       count: 1,
       mediaType:['image'],
-      sizeType: ['original'],
+      sizeType: ['compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
         that.setData({
@@ -93,27 +135,65 @@ Page({
     });
   },
   uploadImage: function (filePath) {
-    console.log(filePath);
+    let that = this
     wx.uploadFile({
-      url: '上传文件的接口地址',
-      filePath: '要上传的文件的临时路径',
-      name: '上传文件对应的 key，服务器端获取文件的 key',
+      url: getApp().globalData.api+"/api/updateAvatar",
+      filePath:filePath ,
+      name:"imageKey",
       formData: {
-        'key1': 'value1', // 额外的表单数据
-        'key2': 'value2'
+        'id': getApp().globalData.userdata.id , // 额外的表单数据
       },
       success: function (res) {
-        var data = res.data;
-        // 上传成功后的处理逻辑,这里需要刷新头像
+        wx.showModal({
+          title: '提示',
+          content: '头像上传成功',
+          showCancel:false,
+          confirmText:"确定"
+        })
+        wx.request({
+          url: getApp().globalData.api + '/api/userInfoGet',
+          method:"GET",
+          data:{
+            token:wx.getStorageSync('token')
+          },
+          success(res){
+            let datas = res.data.data
+            console.log(datas);
+            if (res.data.code == 0){
+              //将用户信息存入全局变量
+              getApp().globalData.userdata = datas
+              that.setData({
+                Avatar:datas.avatar,
+              })
+            } else{
+              wx.showModal({
+                title: '提示',
+                content: '用户身份信息已过期，请重新登录',
+                showCancel: false, // 不显示取消按钮，只显示确认按钮
+                confirmText: '确认', // 设置确认按钮文字
+                success(res) {
+                  if (res.confirm) {
+                    wx.clearStorageSync('token');
+                    wx.redirectTo({
+                      url: '../login/login'  // 替换为你的登录页面路径
+                    });
+                  }
+                }
+              });
+            }
+          },
+          fail(err){
+            console.error(err);
+          }
+        })
       },
       fail: function (err) {
         // 上传失败后的处理逻辑
+        console.log("upload unsusscess");
+        console.log(err);
       }
     });
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad(options) {
     let datas = getApp().globalData.userdata
       this.setData({
@@ -126,51 +206,23 @@ Page({
         Qq:datas.qq,
       })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
   onHide() {
 
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
   onUnload() {
 
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
   onPullDownRefresh() {
 
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
 
   },
-
-  /**
-   * 用户点击右上角分享
-   */
   onShareAppMessage() {
 
   }

@@ -1,7 +1,7 @@
 Page({
   data: {
     userId:"QQ",
-    userPwd:"123456",
+    userPwd:"123",
     campusName:[],
     selectedCampus:"",
     selectedItem:"未选择院校"

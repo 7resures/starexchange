@@ -1,16 +1,28 @@
 // components/inputGroups/input_search/input_search.js
-Page({
+Component({
+  properties: {
+    tags:{
+      type:Array,
+      value:[],
+    },
+    indexSelection:{
+      type:Number,
+      value:-1,
+    }
+  },
   data: {
-    labels:["数码","生活","学习","娱乐","电器","衣物","日常"],
-    checkNumber:9999
+    checkNumber:-1
   },
-  method:{
-    
-  },
-  clickLabel:function(event){
-    this.setData({
-      checkNumber:Number(event.currentTarget.dataset.index)
-    })
+  methods:{
+    clickLabel:function(event){
+      this.setData({
+        indexSelection:event.currentTarget.id
+      })
+      this.sendDataToParent(event.currentTarget.id)
+    },
+    sendDataToParent(e){
+      this.triggerEvent('sendDataToParent', { value: e });
+    },
   },
   onLoad(options) {
 
@@ -19,7 +31,6 @@ Page({
 
   },
   onShow() {
-
   },
   onHide() {
 

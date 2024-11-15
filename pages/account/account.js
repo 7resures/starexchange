@@ -19,6 +19,7 @@ Page({
   //退出登录
   loginOut:function(){
     wx.removeStorageSync('token');  // 删除 token
+    wx.setStorageSync('userdata', {})
   },
   onLoad(options) { 
   },

@@ -3,6 +3,7 @@
 }
 .indexClass{
   display: flex;
+  position: fixed;
   flex-direction: column;
   height: 100%;
   width: 750rpx;
@@ -22,10 +23,10 @@
   width: 750rpx;
   flex-wrap: wrap;
   position: fixed;
-  margin-top: 28%;
+  margin-top: 31%;
 }
  .scrollgoods{
-  height: 950rpx;
+  height: 1050rpx;
 }
 .pic{
   width: 330rpx;
@@ -33,4 +34,42 @@
 }
 .seacchLabel{
   margin-top: 21%;
+  margin-bottom: 1%;
+}
+/* 转圈加载效果 */
+.loading {
+  width: 50rpx;
+  height: 50rpx;
+  border: 5rpx solid #f0f0f0;
+  border-top-color: lightskyblue;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* 顶部加载效果样式 */
+.top-loading {
+  position: absolute;
+  top: 0;
+  left: 45%;
+  transform: translateX(-50%);
+  margin-top: 10rpx;
+}
+
+/* 底部加载效果样式 */
+.bottom-loading {
+  position: absolute;
+  bottom: -20%;
+  left: 45%;
+  transform: translateX(-50%);
+  margin-bottom: 10rpx;
+}
+
+/* 转圈动画效果 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(720deg);
+  }
 }

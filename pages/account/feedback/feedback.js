@@ -21,7 +21,7 @@ Page({
        method:"POST",
        data:{
         adviseContent:this.data.feedbackContent,
-        userId: Number(wx.getStorageSync('userdata').id)
+        UserId: getApp().globalData.userdata.id
        },
        success(res){
         wx.showModal({

@@ -1,7 +1,7 @@
 <view class="merchandiseInfor">
 <!-- 轮播图 -->
 <swiper indicator-dots="{{false}}" autoplay="{{false}}">    
-<block wx:for="{{url}}" wx:key="*this">
+<block wx:for="{{good.images}}" wx:key="*this">
 <swiper-item>
 <image mode="scaleToFill" src="{{item}}" class="changeImage"></image>
 </swiper-item>
@@ -9,6 +9,7 @@
 </swiper>
 <!--商品信息-->
 <view class="goodsInfor">
-<goodInfor></goodInfor>
+<goodInfor goods = "{{good}}" checked = "{{selectChecked}}"></goodInfor>
+<view class="viewsCount">当前访问量:{{viewsCount}}</view>
 </view>
 </view>

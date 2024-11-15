@@ -1,26 +1,21 @@
 <view class="mine">
-<view class="mineTabbar">
-  <van-tabs active="{{active}}" class="vanTabs" title-active-color="#1E90FF" color="#1E90FF" duration="0.5"  bind:click="changeTab">   <!--顶部tabbar-->
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">  <!--搜索框-->
-      <view slot="action" bindtap="onClick">搜索</view>   
-    </van-search>
-
-  <van-tab title="我的发布">    <!--发布组件-->
+  <view class="mineTabbar">
+    <van-tabs active="{{active}}" class="vanTabs" title-active-color="#1E90FF" color="#1E90FF" duration="0.5" bind:click="onChange">
+      <!--顶部tabbar-->
+      <van-search value="{{ value || '' }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">
+        <view slot="action" bindtap="onClick">搜索</view>
+      </van-search>
+      <van-tab title="我的发布">    
    <scroll-view class="scrollgoods" scroll-y="true">
-     <good-label id="label1"></good-label>
+     <good-label id="label1" sign = "{{sign}}" punishgoods = "{{pulishgoods}}"></good-label>
    </scroll-view>
   </van-tab>
 
-  <van-tab title="我的关注">     <!--关注组件-->
+  <van-tab title="我的关注">    
     <scroll-view class="scrollgoods" scroll-y="true">
-     <good-label id="label2"></good-label>
+     <good-label id="label2" sign = "{{sign}}" punishgoods = "{{caregoods}}"></good-label>
    </scroll-view>
   </van-tab>
-
-  </van-tabs>
+    </van-tabs>
+  </view>
 </view>
-
-
-
-</view>
-

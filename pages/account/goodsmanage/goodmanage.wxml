@@ -1,0 +1,21 @@
+<view class="page">
+<view style="position: fixed; top: 0; left: 0; right: 0; z-index: 999;">
+  <van-dropdown-menu>
+    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" />
+    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" />
+  </van-dropdown-menu>
+</view>
+<view class="showContent">
+  <view class="shopList" wx:for="{{goodsList}}" wx:key="index">
+    <van-card thumb-class="picClass" tag="{{item.productStatus}}" price="{{item.productPrice}}" desc="{{item.productDescription}}" title="{{item.productName}}" thumb="{{item.images[0]}}">
+  <view slot="tags">
+    <view class="label">{{item.tags}}</view>
+  </view>
+  <view slot="footer" >
+    <van-button type="info" bind:tap="statusControl" id="{{index}}" round="true" size="normal">{{item.tag == "上架中" ? "下架" : "上架" }}</van-button>
+    <van-button style="margin-left: 5rpx;" bind:tap="deleteGood" id="{{index}}" round="true" size="normal" type="danger">删除</van-button>
+  </view>
+</van-card>
+  </view>
+</view>
+</view>

@@ -1,23 +1,68 @@
-// pages/index/merchandiseInfor/merchandiseInfor.js
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-  url:['../../../images/1.jpg','../../../images/2.jpg','../../../images/3.jpg']
+    id:Number,
+    good:{},
+    selectChecked:false,
+    viewsCount:0,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
-
+  onLoad:function (options) {
+    let that = this
+    this.setData({
+      id:options.productId
+    })
+    wx.request({
+      url: getApp().globalData.api + "/api/goodsGet",
+      method:"GET",
+      data:{
+        productId:that.data.id
+      },
+      success(res){
+        if(res.data.code == 0){
+          that.setData({
+            good:res.data.data
+          })
+          wx.request({
+            url: getApp().globalData.api + "/api/followGet",
+            method:"GET",
+            data:{
+              userId: getApp().globalData.userdata.id,
+              productId: that.data.good.productId
+            },
+            success(res){
+              if(res.data.code == 0){
+                that.setData({
+                  selectChecked:res.data.data
+                })
+              }else{
+                console.log(res.data);
+              }
+            },
+            fail(err){
+              console.log(err);
+            }
+          })
+        }
+      },
+      fail(err){
+      }
+    })
+    wx.request({
+      url: getApp().globalData.api + "/api/addView",
+      method:"GET",
+      data:{
+        productId:that.data.id
+      },
+      success(res){
+        that.setData({
+          viewsCount:res.data.data
+        })
+      },
+      fail(err){
+        console.log(err);
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },
@@ -25,8 +70,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {
-
+  onShow(options) {
   },
 
   /**
@@ -40,7 +84,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload() {
-
+ 
   },
 
   /**

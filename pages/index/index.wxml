@@ -1,23 +1,25 @@
 <view class="indexClass">
   <view class="searchContent">
     <!--搜索框的内容-->
-    <van-search value="{{ value }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">
+    <van-search value="{{ value || '' }}" placeholder="请输入搜索关键词" use-action-slot bind:change="onChange">
       <view slot="action" bindtap="onClick">搜索</view>
     </van-search>
   </view>
   <view class="seacchLabel">
     <!--搜索标签的内容-->
-    <searchLabel></searchLabel>
+    <searchLabel bind:sendDataToParent = "handleData" tags ="{{tags || ''}}" indexSelection = "{{indexSelection || ''}}"></searchLabel>
   </view>
   <view class="merchandise">
     <!--商品的内容-->
-    <scroll-view class="scrollgoods" style="height:{{winHeight - barHeight}}px;" scroll-y="true">
-    <simplegoods wx:for="{{goods}}" wx:key="id" wx:for-index="index" data-index="{{index}}" bindtap="goodInfor">
-      <view slot="picture"> <image class="pic" src="{{item.picture}}"></image></view>
-      <view slot="name">{{item.name}}</view>
-      <text slot="price">{{item.price}}</text>
-      <text slot="category">{{item.category}}</text> 
+    <view wx:if="{{showTopLoading}}" class="loading top-loading"></view>
+    <scroll-view class="scrollgoods"  scroll-y="true" bindscrolltoupper="onScrollToUpper" bindscrolltolower="onScrollToLower">
+    <simplegoods wx:for="{{goods}}" wx:key="id" wx:for-index="index" data-index="{{index}}" id="{{item.productId || ''}}" bindtap="goodInfor">
+      <view slot="picture"> <image class="pic" src="{{item.images[0] || ''}}"></image></view>
+      <view slot="name">{{item.productName || ''}}</view>
+      <text slot="price">{{item.productPrice || ''}}</text>
+      <text slot="category">{{item.tags || ''}}</text> 
     </simplegoods>
+    <view wx:if="{{showBottomLoading}}" class="loading bottom-loading"></view>
   </scroll-view>
   </view>
 </view>

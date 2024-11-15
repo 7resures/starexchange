@@ -1,39 +1,35 @@
 // pages/mine/mine.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     active: 0,
     pulishgoods:[
-      
     ],
     caregoods:[
+    ],
+    sign:0
+  },
+  method:{
 
-    ]
   },
    onClick:function(e){        //搜索输入框搜索按钮触发事件
     console.log("这里触发了搜索事件!")
   },
-  onChange:function(e){       //搜索输入框监听时间
-    console.log("这里触发了输入事件!")
+  onChange:function(event){       //搜索输入框监听时间
+    if (event.detail.index == 1) {
+      this.setData({
+        sign:1
+      })
+    }else{
+      this.setData({
+        sign:0
+      })
+    }
+
   },
   changeTab:function(e){    //传递参数sign
-     this.setData({
-       sign:e.detail.index
-     })
-     if(this.data.sign === 0 )
-     {
-      let goodlabel1 = this.selectComponent('#label1')
-      goodlabel1.changelabel(0);
-     }
-     else
-     {
-      let goodlabel2 = this.selectComponent('#label2')
-      goodlabel2.changelabel(1);
-     }
 
+  },
+  handleChangeLabel(e){
   },
   onClose(event) {
     const { position, instance } = event.detail;
@@ -51,25 +47,71 @@ Page({
         break;
     }
   },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+ 
   onLoad(options) {
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
-
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
   onShow() {
-
+    let that = this
+    wx.request({
+      url: getApp().globalData.api + "/api/goodsGet",
+      method:"GET",
+      data:{
+        userId:getApp().globalData.userdata.id,
+        campusName:getApp().globalData.userdata.campusName,
+      },
+      success(res){
+        if(res.data.code == 0){
+          var datas = res.data.data
+          for (let index = 0; index < datas.length; index++) {
+            if(datas[index].productStatus === 1) {
+              datas[index].productStatus = "上架中"
+            }else{
+              datas[index].productStatus = "已下架"
+            }
+          }
+          that.setData({
+            pulishgoods:res.data.data
+          })
+          wx.request({
+            url: getApp().globalData.api + "/api/goodsGet",
+            method:"GET",
+            data:{
+              userId:getApp().globalData.userdata.id,
+              concern:true
+            },
+            success(res){
+              if(res.data.code == 0){
+                var datas = res.data.data
+                for (let index = 0; index < datas.length; index++) {
+                  if(datas[index].productStatus === 1) {
+                    datas[index].productStatus = "上架中"
+                  }else{
+                    datas[index].productStatus = "已下架"
+                  }
+                }
+                that.setData({
+                  caregoods:datas
+                })
+              }else{
+                that.setData({
+                  caregoods:[]
+                })
+              }
+            },
+            fail(res){
+              console.log(res);
+            }
+          })
+        }
+      },
+      fail(res){
+        console.log(res);
+      }
+    })
   },
 
   /**

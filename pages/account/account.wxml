@@ -20,7 +20,7 @@
         <image slot="icon" class="icon" src = "../../images/upload.png"></image>
         <view slot ="name">上架商品</view>
       </select-label>
-      <select-label src="">
+      <select-label src="../account/goodsmanage/goodmanage">
         <image slot="icon" class="icon" src = "../../images/problem.png"></image>
         <view slot ="name">商品管理</view>
       </select-label>

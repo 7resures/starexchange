@@ -6,55 +6,141 @@ Page({
    * 页面的初始数据
    */
   data: {
-      option1: [
-        { text: '数码', value: 0 },
-        { text: '生活', value: 1 },
-        { text: '学习', value: 2 },
-        { text: '娱乐', value: 3 },
-        { text: '电器', value: 4 },
-        { text: '衣物', value: 5 },
-        { text: '日常', value: 6 },
-        { text: '请选择', value: 7 },
-      ],
-      value1: 7,
+      Name:"",
+      Price:Number,
+      Description:"",
+      Wechat:"",
+      QQ:"",
+      option1: [],
+      value1: 0,
       fileList: [
-
       ],
+      uploadFiles:[],
+      deletable: false,
     },
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+    handleInputChange:function(e) {
+      const { field } = e.currentTarget.dataset; // 获取 data-field 的值
+      this.setData({
+        [field]: e.detail.value, // 动态设置对应的 data 字段
+      });
 
-  },
-  deleteImg(e){
-    let index = e.detail.index;
-    this.data.fileList.splice(index,1);
+    },
+    onDropdownChange:function(e){
+      this.setData({
+        value1: e.detail
+      });
+      console.log(this.data.value1);
+    }
+    ,
+  deletePic:function(e){
+    let that = this
+    this.data.fileList.splice(e.detail.index,1)
+    this.data.uploadFiles.splice(e.detail.index,1)
     this.setData({
-      fileList:this.data.fileList
+      fileList:that.data.fileList,
+      uploadFiles:that.data.uploadFiles,
     })
-    console.log(index);
-  }, 
-  afterRead(event) {
-    const { file } = event.detail;
-    // 当设置 mutiple 为 true 时, file 为数组格式，否则为对象格式
-    wx.uploadFile({
-      url: 'https://example.weixin.qq.com/upload', // 仅为示例，非真实的接口地址
-      filePath: file.url,
-      name: 'file',
-      formData: { user: 'test' },
-      success(res) {
-        // 上传完成需要更新 fileList
-        const { fileList = [] } = this.data;
-        fileList.push({ ...file, url: res.data });
-        this.setData({ fileList });
-      },
-    });
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
+  afterRead(event) {
+    var file = event.detail.file;
+    let FileList = []
+    let FileUrl = []
+    for (let index = 0; index < file.length; index++) {
+      FileList.push({url:file[index].url})
+      FileUrl.push(file[index].url)
+    }
+    console.log(FileList);
+    console.log(FileUrl);
+   this.setData({
+    fileList:FileList,
+    uploadFiles:FileUrl
+   })
+  },
+  submitGood:function(){
+    let v = this.data.value1
+    var textValue;
+    
+    for (let index = 0; index < this.data.option1.length; index++) {
+        if(this.data.option1[index].value == v){
+          textValue = this.data.option1[index].text;
+          break;
+        }
+    }
+    if(textValue == undefined || textValue == "请选择"){
+      wx.showModal({
+        title: '提示',
+        content: '请选择商品类别',
+        showCancel:false,
+        confirmText:"确认",
+      })
+      return
+    }
+    let that = this
+    wx.request({
+      url: getApp().globalData.api + "/api/goodInfoUpload",
+      method: 'POST',
+      data:{
+        userId: getApp().globalData.userdata.id,
+        productName:that.data.Name,
+        productDescription:that.data.Description,
+        productPrice:parseFloat(that.data.Price),
+        contactWeChat:that.data.Wechat,
+        contactPhone:that.data.PhoneNumber,
+        contactQQ:that.data.QQ,
+        tags:[ textValue ],
+        productStatus:1,
+        ProductStore:0,
+        productViews:0,
+      },
+      success(res){
+        // console.log(that.data.Name);
+        // console.log(that.data.Description);
+        // console.log(that.data.Price);
+        // console.log([that.data.option1[v].text]);
+        let pid = res.data.data
+        if (res.data.code == 0) {
+          that.data.uploadFiles.forEach(filePath => {
+            wx.uploadFile({
+              url: getApp().globalData.api + "/api/goodPicUpload",
+              filePath: filePath, 
+              name: 'images', 
+              formData: {
+                Pid: pid
+              },
+              success(res) {
+                wx.showModal({
+                  title: '提示',
+                  content: '上架成功，即将跳转',
+                  showCancel:false,
+                  confirmText:"确认",
+                })
+                setTimeout(() => {
+                  wx.switchTab({
+                    url: '../../account/account',
+                  })
+                }, 1000); 
+               
+              },
+              fail(err) {
+                console.error('上传失败:', err);
+              }
+            });
+          });
+        }else{
+          console.log(res);
+          wx.showModal({
+            title: '提示',
+            content: '确认选择商品类别',
+            showCancel:false,
+            confirmText:"确认"
+          })
+        }
+      },
+      fail(err){
+        console.log(err);
+      }
+    })
+  },
   onReady() {
 
   },
@@ -63,7 +149,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
+    let userData = getApp().globalData.userdata
+    let that = this
+    //初始化信息
+    this.setData({
+      Wechat:userData.wechat,
+      QQ:userData.qq,
+      PhoneNumber:userData.phoneNumber
+    })
+    wx.request({
+      url: getApp().globalData.api + "/common/tagGet",
+      method:"GET",
+      data:{},
+      success(res){
+        let Reslist = []
+        for (let index = 0; index < res.data.data.length; index++) {
+          Reslist.push({text:res.data.data[index].tag_name,value:res.data.data[index].id})
+        }
+        Reslist.push({text:"请选择",value:Reslist[Reslist.length - 1].value + 1})
+        that.setData({
+          option1:Reslist,
+          value1:Reslist[Reslist.length - 1].value + 1
+        })
+      },
+      fail(err){
+        console.log(err);
+      }
+    })
   },
 
   /**

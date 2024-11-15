@@ -16,43 +16,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-    goods:[
-      {
-        id:1,
-        name:"27寸水晶大电视",
-        picture:"../../images/star.png",
-        price:"￥999",
-        category:"电器"
-      },
-      {
-        id:1,
-        name:"27寸水晶大电视",
-        picture:"../../images/star.png",
-        price:"￥999",
-        category:"电器"
-      },
-      {
-        id:1,
-        name:"27寸水晶大电视",
-        picture:"../../images/star.png",
-        price:"￥999",
-        category:"电器"
-      },
-      {
-        id:1,
-        name:"27寸水晶大电视",
-        picture:"../../images/star.png",
-        price:"￥999",
-        category:"电器"
-      },
-      {
-        id:1,
-        name:"27寸水晶大电视",
-        picture:"../../images/star.png",
-        price:"￥999",
-        category:"电器"
-      }
-    ]
   },
 
   /**

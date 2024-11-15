@@ -1,4 +1,3 @@
-/* components/merchandises/goodInfor/goodInfor.wxss */
 .rowlabel{
   display: flex;
   flex-direction: row;

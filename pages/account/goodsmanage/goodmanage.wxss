@@ -1,0 +1,33 @@
+/* pages/account/goodsmanage/goodmanage.wxss */
+.page{
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+}
+.shopList{
+  padding: 15rpx;
+}
+.topFixed{
+  width: 100%;
+  height: 80rpx;
+}
+.showContent{
+  margin-top:12% ;
+}
+.custom-tag {
+  background-color: #6631a3;  /* 设置背景色 */
+  color: white;               /* 设置文字颜色 */
+  padding: 4px 8px;           /* 设置内边距 */
+  border-radius: 4px;         /* 设置圆角 */
+}
+.label{
+  border: 2rpx red solid;
+  padding: 2rpx; float: left;
+  color: red;
+  border-radius: 5rpx;
+  margin: 10rpx 0rpx;
+}
+.picClass{
+  width: 100%;
+  height: 100%;
+}

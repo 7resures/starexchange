@@ -1,40 +1,67 @@
 // components/merchandises/goodInfor/goodInfor.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-    checked:false,
-    goodsInfor:
-    {  
-      state:"上架中",
-      id: 1,
-      price:999,
-      type:"生活",
-      uploadDate:"2022/07/06",
-      name:"星之守护者手办",
-      introduction:"这是星之守护者手办这是星之守护者手办这是星之守护者手办这是星之守护者手办这是星之守护者手办",
-      care:0,
-      wechat:1231321,
-      qq:123456798,
+Component({
+  properties:{
+    goods:{
+      type:Object,
+      value:{}
+    },
+    checked:{
+      type:Boolean,
+      value:false
     }
   },
-  onChange({ detail }) {
-    // 需要手动对 checked 状态进行更新
-    this.setData({ checked: detail });
+  data: {
   },
+  methods:{
+    onChange:function(e) {
+      let that = this
+      this.setData({
+        checked:!that.properties.checked,
+      })
+      if(getApp().globalData.userdata.id === this.properties.goods.userId){
+        wx.showModal({
+          title: '提示',
+          content: '你不能关注自己的商品',
+          showCancel:false,
+         confirmText:"确认"
+        })
+        this.setData({
+          checked:!that.properties.checked,
+        })
+        return
+      }
+      wx.request({
+        url: getApp().globalData.api + "/api/followUpdate",
+        method:"PUT",
+        data:{
+          userId:getApp().globalData.userdata.id,
+          productId:that.properties.goods.productId,
+          isConcerned:that.properties.checked
+        },
+        success(res){ 
+          if(res.data.code == 0){
+            wx.showModal({
+              title: '提示',
+              content: res.data.msg,
+              showCancel:false,
+              confirmText:"确认"
+            })
+          }else{
+            console.log(that.properties.checked);
+            console.log(res.data);
+          }
+        },
+        fail(err){
+          console.log(err);
+        }
+      })
+      // 如果不是自己的商品，处理关注后的逻辑，更新商品关注信息字段，更新商品关注表
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
+    },
+  },
   onLoad(options) {
-
   },
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
   onReady() {
 
   },

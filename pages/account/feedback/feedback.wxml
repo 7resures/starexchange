@@ -3,4 +3,3 @@
 </textarea>
 <van-button class="buttoninfo" bind:tap="commitInfor" type="info">提交反馈</van-button>
 </view>
-<van-dialog id="van-dialog" />

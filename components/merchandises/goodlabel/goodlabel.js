@@ -1,129 +1,39 @@
 // components/merchandises/goodlabel/goodlabel.js
-Page({
-
-  /**
-   * 页面的初始数据
-   */
+Component({
   properties: {
-    
+    punishgoods:{
+      type:Array,
+      value:[]
+    },
+    sign:{
+      type:Number,
+      value:0
+    }
   },
   data: {
     sign:0,
-    goodlabels:[
+  },
+  methods:{
+    changelabel: function () {
+      console.log("标签已更改!");
+      // 在这里编写更改标签的逻辑
+    },
+    goodClick:function(e){
+      if(this.data.sign === 1) 
       {
-        id:1,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:2,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:3,
-        url:"../../../images/3.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:4,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:5,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:6,
-        url:"../../../images/3.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
+        wx.navigateTo({
+          url: '../../pages/index/merchandiseInfor/merchandiseInfor?productId='+e.currentTarget.id,
+        })
       }
-    ],
-    caregoods:[
+      else
       {
-        id:3,
-        url:"../../../images/3.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:2,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:1,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:6,
-        url:"../../../images/3.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:5,
-        url:"../../../images/2.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
-      },
-      {
-        id:4,
-        url:"../../../images/1.jpg",
-        state:"上架中",
-        uploadDate:"2022/11/19",
-        name:"星之守护者手办"
+       wx.navigateTo({
+         url: '../../pages/mine/minepunish/minepunish?productId='+e.currentTarget.id,
+       })
       }
-    ]
-
+     },
   },
-  method:{
-    
-  },
-  goodclick:function(e){
-   if(this.data.sign === 1) 
-   {
-     wx.navigateTo({
-       url: '../../pages/index/merchandiseInfor/merchandiseInfor',
-     })
-   }
-   else
-   {
-    wx.navigateTo({
-      url: '../../pages/mine/minepunish/minepunish',
-    })
-   }
-  },
-  changelabel:function(index){
-  this.setData({
-    sign:index
-  })
-  },
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad(options) {
   },
 
